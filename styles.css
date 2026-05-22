@@ -860,37 +860,48 @@ h3 {
 .site-footer {
   position: relative;
   overflow: hidden;
-  padding: clamp(58px, 8vw, 96px) clamp(18px, 6vw, 88px) 26px;
+  padding: clamp(54px, 7vw, 84px) clamp(18px, 6vw, 88px) 26px;
   color: rgba(247, 240, 227, 0.72);
   background:
-    linear-gradient(135deg, rgba(15, 14, 12, 0.96), rgba(29, 26, 22, 0.9)),
-    url("assets/bg-dark-performance.png") center / cover no-repeat,
+    linear-gradient(180deg, rgba(34, 29, 21, 0.98) 0%, rgba(15, 14, 12, 1) 38%, rgba(10, 10, 9, 1) 100%),
+    linear-gradient(90deg, rgba(201, 155, 82, 0.22), transparent 34% 66%, rgba(29, 89, 70, 0.18)),
     #0f0e0c;
+  border-top: 1px solid rgba(240, 216, 154, 0.28);
   font-size: 14px;
 }
 
 .site-footer::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 auto;
+  height: 5px;
   background:
-    radial-gradient(circle at 16% 20%, rgba(201, 155, 82, 0.2), transparent 28%),
-    linear-gradient(90deg, rgba(240, 216, 154, 0.16), transparent 32% 100%);
+    linear-gradient(90deg, var(--gold), rgba(29, 89, 70, 0.92), var(--gold-soft));
+  pointer-events: none;
+}
+
+.site-footer::after {
+  content: "";
+  position: absolute;
+  inset: 5px 0 0;
+  background:
+    radial-gradient(circle at 10% 14%, rgba(240, 216, 154, 0.15), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 38%);
   pointer-events: none;
 }
 
 .footer-main,
 .footer-bottom {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .footer-main {
   display: grid;
-  grid-template-columns: minmax(280px, 1.4fr) minmax(150px, 0.55fr) minmax(210px, 0.8fr) minmax(260px, 0.95fr);
-  gap: clamp(28px, 5vw, 70px);
+  grid-template-columns: minmax(240px, 1.35fr) minmax(128px, 0.55fr) minmax(190px, 0.82fr) minmax(240px, 0.95fr);
+  gap: clamp(24px, 4vw, 58px);
   align-items: start;
-  padding-bottom: 48px;
+  padding: 0 0 44px;
   border-bottom: 1px solid rgba(247, 240, 227, 0.14);
 }
 
@@ -934,6 +945,7 @@ h3 {
 .footer-contact {
   display: grid;
   gap: 11px;
+  min-width: 0;
 }
 
 .footer-column h3,
@@ -951,6 +963,7 @@ h3 {
   margin: 0;
   color: rgba(247, 240, 227, 0.74);
   font-size: 15px;
+  overflow-wrap: anywhere;
 }
 
 .footer-column a:hover,
@@ -960,6 +973,17 @@ h3 {
 
 .footer-contact {
   gap: 13px;
+  justify-items: start;
+  padding: 22px;
+  border: 1px solid rgba(240, 216, 154, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.footer-contact a[href^="mailto:"] {
+  max-width: 100%;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
 .footer-button {
@@ -1045,6 +1069,10 @@ h3 {
   .experience-layout,
   .photo-mosaic {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-main {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
   }
 
   .featured-card {
@@ -1277,14 +1305,27 @@ h3 {
   }
 
   .site-footer {
-    flex-direction: column;
+    padding-top: 44px;
   }
 
   .footer-main {
     grid-template-columns: 1fr;
+    gap: 28px;
   }
 
   .footer-bottom {
     flex-direction: column;
+  }
+
+  .footer-brand p {
+    max-width: none;
+  }
+
+  .footer-contact {
+    padding: 20px;
+  }
+
+  .footer-button {
+    width: 100%;
   }
 }
